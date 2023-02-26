@@ -9,16 +9,15 @@ and configure Apache, PHP, and MySQL on a Linux server.
 	- make sure apache2 is enabled and running  
 	`systemctl list-unit-files apache2.service`  
 	`systemctl status apache2`
-	- install w3m
+	- install w3m  
 	`cd /var/log`  
 	`cd apache2`  
 	`sudo apt install w3m`  
 	`w3m localhost`  
-	- created a web page
+	- created a web page  
 	`cd /var/www/html/`  
 	`sudo mv index.html index.html.original`  
 	`sudo nano index.html`  
-	
 	add basic html to create a page 
 
 2. I installed PHP and configured that to work with Apache2

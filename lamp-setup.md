@@ -121,4 +121,96 @@ To install Apache2, I ran the following commands:
 	\q
 	```
 
+4. Install PHP and MySQL Support
+	- `sudo apt install php-mysql php-mysqli`  
+	- then restart Apache2 and MySQL  
+	```
+	sudo systemctl restart apache2
+	sudo systemctl restart mysql
+	```  
+	- create PHP scripts - create a login.php file in /var/www/html  
+	```  
+	cd /var/www/html/
+	sudo touch login.php
+	sudo chmod 640 login.php
+	sudo chown :www-data login.php
+	ls -l login.php
+	sudo nano login.php
+	```
+	- add login credentials to the file just opened in nano  
+	```
+	<?php // login.php
+	$db_hostname = "localhost";
+	$db_database = "opacdb";
+	$db_username = "opacuser";
+	$db_password = "XXXXXXXXX";
+	?>
+	```  
+	- create a new PHP file titled opac.php  
+	`sudo nano opac.php`  
+	transcribe (or copy and paste) the following text:  
+	``` 
+	<html>
+	<head>
+	<title>MySQL Server Example</title>
+	</head>
+	<body>
 
+	<h1>A Basic OPAC</h1>
+
+	<p>We can retrieve all the data from our database and book table
+	using a couple of different queries.</p>
+
+	<?php
+
+	// Load MySQL credentials
+	require_once 'login.php';
+
+	// Establish connection
+	$conn = mysqli_connect($db_hostname, $db_username, $db_password) or
+	  die("Unable to connect");
+
+	// Open database
+	mysqli_select_db($conn, $db_database) or
+	  die("Could not open database '$db_database'");
+
+	echo "<h2>Query 1: Retrieving Publisher and Author Data</h2>";
+
+	// Query 1
+	$query1 = "select * from books";
+	$result1 = mysqli_query($conn, $query1);
+
+	while($row = $result1->fetch_assoc()) {
+	    echo "<p>Publisher " . $row["publisher"] .
+	        " published a book by " . $row["author"] .
+	        ".</p>";
+	}
+
+	mysqli_free_result($result1);
+
+	echo "<h2>Query 2: Retrieving Author, Title, Date Published Data</h2>";
+
+	$result2 = mysqli_query($conn, $query1);
+	while($row = $result2->fetch_assoc()) {
+	    echo "<p>A book by " . $row["author"] .
+	        " titled <em>" . $row["title"] .
+	        "</em> was released on " . $row["copyright"] .
+	        ".</p>";
+	}
+
+	// Free result2 set
+	mysqli_free_result($result2);
+
+	/* Close connection */
+	mysqli_close($conn);
+
+	?>
+
+	</body>
+	</html>
+	```  
+	- test the PHP syntax - nothing will output if all is well.
+	```
+	sudo php -f login.php
+	sudo php -f index.php
+	```

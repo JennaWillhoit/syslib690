@@ -5,6 +5,10 @@ and configure Apache, PHP, and MySQL on a Linux server.
 
 **Task:**
 
+To install Apache2, I ran the following commands:  
+`sudo apt instal apache2`  
+
+
 1. I installed Apache2
 	- make sure apache2 is enabled and running  
 	`systemctl list-unit-files apache2.service`  
@@ -52,8 +56,4 @@ and configure Apache, PHP, and MySQL on a Linux server.
 
 3. I installed MySQL and configured that to work with Apache2
 
-To install Apache2, I ran the following commands:
 
-```
-sudo apt instal apache2
-```

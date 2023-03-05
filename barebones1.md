@@ -128,3 +128,28 @@ Be sure to change each IP address instance to your IP address
 
 	?>
 	```  
+
+## Modifications
+
+- To make your table more robust, add more records to the *books* table. To do that, use the *insert into* MySQL statements.  
+	`mysql -u opacuser -p`  
+	Use the password you setup for "opacuser"  
+
+- Select the database you want to use:  
+	`show databases;` and then  
+	`use opacdb;`  
+
+- To see the records you already have in *books*  
+	`select * from books;`  	
+ 
+- Then run the `insert` command with the data for the new records:  
+	```  
+	insert into books  
+	(author, title, publisher, copyright) values  
+	('Emma Donoghue', 'Room', 'Little, Brown \& Company', '2010-08-06'),  
+	('Zadie Smith', 'White Teeth', 'Hamish Hamilton', '2000-01-27');  
+	```  
+
+Note: to exit the mysql line use `ctrl C`, to clear the screen use `ctrl L`, to exit the MySQL server use `ctrl D`  
+
+

@@ -131,7 +131,7 @@ Be sure to change each IP address instance to your IP address
 
 ## Modifications
 
-- To make your table more robust, add more records to the *books* table. To do that, use the *insert into* MySQL statements.  
+- To make your table more robust, add more records to the **books** table. To do that, use the **insert into** MySQL statements.  
 	`mysql -u opacuser -p`  
 	Use the password you setup for "opacuser"  
 
@@ -139,7 +139,7 @@ Be sure to change each IP address instance to your IP address
 	`show databases;` and then  
 	`use opacdb;`  
 
-- To see the records you already have in *books*  
+- To see the records you already have in **books**  
 	`select * from books;`  	
  
 - Then run the `insert` command with the data for the new records:  

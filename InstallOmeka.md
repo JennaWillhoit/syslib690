@@ -102,3 +102,16 @@ sudo chown -R www-data:www-data *
 sudo systemctl restart apache2  
 sudo systemctl restart mysql  
 ```  
+
+### Step Seven: Run the Install Script  
+
+- For this part, go to the GoogleCloud console and click the IP address URL (http://34.29.56.69/). Then copy and paste this unto the URL: `omeka`  
+
+### Finish Installation  
+
+From the Welcome screen on your URL, set up a site username and password - *NOT* the same as the username and password you used to create your 
+Omeka database in MySQL.  
+
+Note: We have not set up email on the server. Enter an email when setting up the user account but it won't work. Also, make sure you are using http instead of https.  
+
+
